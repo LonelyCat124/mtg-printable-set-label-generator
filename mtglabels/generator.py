@@ -247,12 +247,15 @@ class LabelGenerator:
             icon_b64 = None
             if icon_resp.ok:
                 icon_b64 = base64.b64encode(icon_resp.content).decode('utf-8')
+            else:
+                printf("Failed to get images")
+                assert False
 
             labels.append(
                 {
-                    "name": name,
+                    #"name": name,
                     "code": exp["code"],
-                    "date": datetime.strptime(exp["released_at"], "%Y-%m-%d").date(),
+                    #"date": datetime.strptime(exp["released_at"], "%Y-%m-%d").date(),
                     "icon_url": exp["icon_svg_uri"],
                     "icon_b64": icon_b64,
                     "x": x,
